@@ -1,4 +1,3 @@
-//Example fetch using pokemonapi.co
 document.querySelector('button').addEventListener('click', getFetch)
 
 function getFetch(){
@@ -37,4 +36,31 @@ class Poke {
     })
     console.log(this.typeList)
   }
+
+  weightToKilograms(weight) {
+    return Math.floor(weight * 10)
+  }
+
+  heightToCentimeters(height) {
+    return Math.floor(height * 10)
+  }
+
+  isItHousePet() {
+    let badTypes = ["fire", "electric", "fighting", "poison", "ghost"]
+    let weight = this.weightToKilograms(this.weight)
+    let height = this.heightToCentimeters(this.height)
+    if(weight > 180) {
+      this.reason.push(`It is to heavy at ${weight}Kg`)
+      this.housepet = false
+    }
+    if(height > 210) {
+      this.reason.push(`It is to tall at ${height}cm`)
+      this.housepet = false
+    }
+    if(badTypes.some(elem => this.typeList.indexOf(elem) >= 0)) {
+      this.reason.push('It\'s type is too dangerous')
+      this.housepet = false
+    }
+  }
 }
+
