@@ -12,6 +12,22 @@ function getFetch(){
           data.name, data.height, data.weight, data.types, data.sprites.other["official-artwork"]["front_default"]
         )
         potentialPet.getTypes()
+        potentialPet.isItHousePet()
+        let decision = ""
+        if(potentialPet.housepet) {
+          decision = 'This Pokemon is small enough, light enough, and safe enough to be a good pet!'
+        }else {
+          decision = `This Pokemon would not be a good pet because ${potentialPet.reason.join(', ')}.`
+        }
+        const height = `Height: ${potentialPet.height / 10}m`
+        const weight = `Weight: ${Math.floor(potentialPet.weight / 10)}Kg`
+        const types = `Types: ${potentialPet.typeList.join(', ')}`
+        document.getElementById('pokeName').innerText = potentialPet.name.charAt(0).toUpperCase() + potentialPet.name.slice(1);
+        document.getElementById('height').innerText = height
+        document.getElementById('weight').innerText = weight
+        document.getElementById('types').innerText = types
+        document.querySelector('h2').innerText = decision
+        document.querySelector('img').src = potentialPet.image
       })
       .catch(err => {
           console.log(`error ${err}`)
@@ -38,11 +54,11 @@ class Poke {
   }
 
   weightToKilograms(weight) {
-    return Math.floor(weight * 10)
+    return Math.floor(weight / 10)
   }
 
   heightToCentimeters(height) {
-    return Math.floor(height * 10)
+    return height / 10
   }
 
   isItHousePet() {
@@ -53,12 +69,12 @@ class Poke {
       this.reason.push(`It is to heavy at ${weight}Kg`)
       this.housepet = false
     }
-    if(height > 210) {
-      this.reason.push(`It is to tall at ${height}cm`)
+    if(height > 2.1) {
+      this.reason.push(`It is to tall at ${height}m`)
       this.housepet = false
     }
     if(badTypes.some(elem => this.typeList.indexOf(elem) >= 0)) {
-      this.reason.push('It\'s type is too dangerous')
+      this.reason.push('Its type is too dangerous')
       this.housepet = false
     }
   }
