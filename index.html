@@ -13,18 +13,24 @@
 	</head>
 	<body>
 
-		<h1>Would This Pokemon Would Be a Good Pet?</h1>
+		<h1>Would This Pokemon Make a Good Pet?</h1>
 		<input type="text" name="" value="">
 		<button type="button" name="button">Check it!</button>
 
 		<h2>Enter a Pokemon in the box above and click the button to find out! We'll check it's height, weight, and associted type(s) to make sure it's safe for your home!</h2>
+		<h3 id="locations"></h3>
 		
-		<img src="img/pokemon_siluette_image.png" alt="pikachu siluette">
-		<span id="pokeName"></span>
-		<p id="height"></p>
-		<p id="weight"></p>
-		<p id="types"></p>
-		
+		<div id="card">
+			<div>
+				<img src="img/pokemon_siluette_image.png" alt="pikachu siluette">
+				<span id="pokeName"></span>
+			</div>
+			<div>
+				<p id="height"></p>
+				<p id="weight"></p>
+				<p id="types"></p>		
+			</div>
+		</div>
 		<h3>The following types are considered "dangerous": "fire", "electric", "poison", "ghost".</h3>
 		<h3>A height over 2.1m and a weight of more than 180 kg are not considered suitable for a pet.</h3>
 

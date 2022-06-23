@@ -5,15 +5,27 @@
 /* Box Model Hack */
 *{
   box-sizing: border-box;
+  text-align: center;
+  border: 1px solid red;
 }
 
 /******************************************
 /* LAYOUT
 /*******************************************/
 img{
+  width: 300px;
   display: block;
   margin: 0 auto;
 }
+
+#card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+
 
 
 /******************************************
